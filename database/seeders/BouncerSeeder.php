@@ -18,31 +18,35 @@ class BouncerSeeder extends Seeder
     {
         // php artisan db:seed --class=BouncerSeeder
 
-        $admin = Bouncer::role()->firstOrCreate([
-            'name' => 'superadmin',
-            'title' => 'Super Admin',
-        ]);
+        // $admin = Bouncer::role()->firstOrCreate([
+        //     'name' => 'superadmin',
+        //     'title' => 'Super Admin',
+        // ]);
 
-        $user = User::create([
-            'name' => "Admin",
-            'email' => "admin@cmc.com",
-            'password' => Hash::make('password'),
-        ]);
+        // $user = User::create([
+        //     'name' => "Admin",
+        //     'email' => "admin@cmc.com",
+        //     'password' => Hash::make('password'),
+        // ]);
 
         // $admin = Bouncer::role()->firstOrCreate([
         //     'name' => 'editor',
         //     'title' => 'Editor',
         // ]);
 
-        Bouncer::allow('superadmin')->everything();
+        // Bouncer::allow('superadmin')->everything();
 
         $ban = Bouncer::ability()->firstOrCreate([
-            'name' => 'manage-users',
-            'title' => 'Manage Users',
+            'name' => 'manage-settings',
+            'title' => 'Manage Settings',
         ]);
+        // $ban = Bouncer::ability()->firstOrCreate([
+        //     'name' => 'manage-users',
+        //     'title' => 'Manage Users',
+        // ]);
 
-        $user = User::find(1);
-        $user->assign('superadmin');
-        Bouncer::allow('superadmin')->everything();
+        // $user = User::find(1);
+        // $user->assign('superadmin');
+        // Bouncer::allow('superadmin')->everything();
     }
 }

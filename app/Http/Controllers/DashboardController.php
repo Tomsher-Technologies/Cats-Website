@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard')->with([
+        return view('admin.dashboard')->with([
             'countNews' => 1,
             'countEnquiry' => 1,
         ]);

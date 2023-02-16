@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         $users = User::with('roles')->get();
         // dd($users);
-        return view('users.index')->with([
+        return view('admin.users.index')->with([
             'users' => $users
         ]);
     }
@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         $roles = Bouncer::role()->all();
         $abilities = Bouncer::ability()->all();
-        return view('users.create')
+        return view('admin.users.create')
             ->with([
                 'roles' => $roles,
                 'abilities' => $abilities
@@ -76,7 +76,7 @@ class UserController extends Controller
 
         Bouncer::refresh();
 
-        return redirect()->route('users.index')->with('status', 'User Created');
+        return redirect()->route('admin.users.index')->with('status', 'User Created');
     }
 
     /**
@@ -87,7 +87,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show')->with(['user' => $user]);
+        return view('admin.users.show')->with(['user' => $user]);
     }
 
     /**
@@ -105,7 +105,7 @@ class UserController extends Controller
         $userRoles = $user->getRoles()->toArray();
         $userAbilities = $user->getAbilities()->pluck('id')->toArray();
 
-        return view('users.edit')
+        return view('admin.users.edit')
             ->with([
                 'user' => $user,
                 'roles' => $roles,
@@ -168,6 +168,6 @@ class UserController extends Controller
             return back()->with('error', 'Sorry the last super admin cannot be deleted.');
         }
         $user->delete();
-        return redirect()->route('users.index')->with('status', 'User has been deleted.');
+        return redirect()->route('admin.users.index')->with('status', 'User has been deleted.');
     }
 }

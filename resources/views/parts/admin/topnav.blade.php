@@ -30,7 +30,7 @@
     </div>
 
 
-    <a class="navbar-logo" href="{{ route('dashboard') }}">
+    <a class="navbar-logo" href="{{ route('admin.dashboard') }}">
         {{-- <span class="logo d-none d-xs-block"></span>
         <span class="logo-mobile d-block d-xs-none"></span> --}}
         <img class="d-block m-auto" src="{{ asset('images/logo.png') }}" alt="Logo">
@@ -62,7 +62,7 @@
             </button>
 
             <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a class="dropdown-item" href="{{ route('user.profile') }}">Account</a>
+                <a class="dropdown-item" href="{{ route('admin.user.profile') }}">Account</a>
                 <a class="dropdown-item" href="#" onclick="document.getElementById('logoutForm').submit();">Sign
                     out</a>
             </div>

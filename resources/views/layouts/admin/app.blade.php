@@ -28,7 +28,7 @@
 <body class="menu-sub-hidden show-spinner rounded {{ $body_class ?? '' }}" id="{{ $body_id ?? 'app-container' }}">
 
     {{-- Navbar Start --}}
-    @include('parts.topnav')
+    @include('parts.admin.topnav')
     {{-- Navbar End --}}
 
     {{-- Sidenav Start --}}
@@ -43,7 +43,7 @@
     {{-- Main Content End --}}
 
     {{-- Footer Start --}}
-    @include('parts.footer')
+    @include('parts.admin.footer')
     {{-- Footer End --}}
 
     {{-- Logout Form Start --}}

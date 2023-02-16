@@ -1,4 +1,4 @@
-@extends('layouts.auth',['body_class'=>'background show-spinner no-footer','title'=>'Forgot Password'])
+@extends('layouts.admin.auth',['body_class'=>'background show-spinner no-footer','title'=>'Forgot Password'])
 @section('content')
     <div class="container">
         <div class="row h-100">

@@ -9,9 +9,12 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Contracts\LoginResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -23,7 +26,21 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse
+        {
+            public function toResponse($request)
+            {
+                return redirect(env('ADMIN_PREFIX', 'admin') . RouteServiceProvider::HOME);
+            }
+        });
+
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse
+        {
+            public function toResponse($request)
+            {
+                return redirect(env('ADMIN_PREFIX'));
+            }
+        });
     }
 
     /**
@@ -50,11 +67,11 @@ class FortifyServiceProvider extends ServiceProvider
 
 
         Fortify::loginView(function () {
-            return view('auth.login');
+            return view('admin.auth.login');
         });
 
         Fortify::requestPasswordResetLinkView(function () {
-            return view('auth.forgot-password');
+            return view('admin.auth.forgot-password');
         });
 
         Fortify::resetPasswordView(function ($request) {

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['body_class' => 'nav-md'])
+@extends('layouts.admin.app', ['body_class' => 'nav-md'])
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -42,7 +42,7 @@
                         </div>
 
                         @if ($user->can('manage-users'))
-                            <a href="{{ route('users.edit', $user) }}" class="btn btn-secondary mb-1">Edit</a>
+                            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-secondary mb-1">Edit</a>
                         @endif
 
 

@@ -1,11 +1,11 @@
-@extends('layouts.app',['body_class'=>'','title'=>'Users'])
+@extends('layouts.admin.app',['body_class'=>'','title'=>'Users'])
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h1>Users</h1>
                 <div class="text-zero top-right-button-container">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary btn-lg top-right-button mr-1">ADD NEW
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-lg top-right-button mr-1">ADD NEW
                         USER</a>
                 </div>
                 <div class="separator mb-5"></div>
@@ -44,9 +44,9 @@
                                             <td>{{ $user->roles->first() ? $user->roles->first()->title : '' }}</td>
                                             <td>{{ $user->status ? "Enabled":"Disabled" }}</td>
                                             <td>
-                                                <a href="{{ route('users.show', $user) }}"
+                                                <a href="{{ route('admin.users.show', $user) }}"
                                                     class="btn btn-primary mb-1">Show</a>
-                                                <a href="{{ route('users.edit', $user) }}"
+                                                <a href="{{ route('admin.users.edit', $user) }}"
                                                     class="btn btn-secondary mb-1">Edit</a>
                                             </td>
                                         </tr>

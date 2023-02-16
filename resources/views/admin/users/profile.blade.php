@@ -1,4 +1,4 @@
-@extends('layouts.app',['body_class'=>'nav-md'])
+@extends('layouts.admin.app',['body_class'=>'nav-md'])
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -25,7 +25,7 @@
 
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.profile-update') }}">
+                        <form method="POST" action="{{ route('admin.user.profile-update') }}">
                             @csrf
                             @method('PUT')
                             <h5>Edit Details</h5>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.password-update') }}">
+                        <form method="POST" action="{{ route('admin.user.password-update') }}">
                             @method('PUT')
                             @csrf
                             <h5>Reset Password</h5>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <h5>Security</h5>
                         <h6>Log Out Everywhere Else</h6>
-                        <form method="POST" action="{{ route('user.logout-everywhere') }}">
+                        <form method="POST" action="{{ route('admin.user.logout-everywhere') }}">
                             @csrf
 
                             <div class="form-row">
