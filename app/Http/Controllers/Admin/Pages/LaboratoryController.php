@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pages\Hospital;
+use App\Models\Pages\Laboratory;
 use Illuminate\Http\Request;
 
-class HospitalController extends Controller
+class LaboratoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        return view('admin.hospital.index');
+        return view('admin.lab.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        return view('admin.hospital.create');
+        return view('admin.lab.create');
     }
 
     /**
@@ -40,10 +40,10 @@ class HospitalController extends Controller
             'name' => 'required',
         ]);
 
-        $hotel = Hospital::create($request->all());
+        $hotel = Laboratory::create($request->all());
 
         if ($request->hasFile('image')) {
-            $file_name = uploadImage($request, 'image', 'hospital');
+            $file_name = uploadImage($request, 'image', 'laboratory');
             $hotel->image = $file_name;
         }
 
@@ -57,22 +57,22 @@ class HospitalController extends Controller
             $hotel->videos = json_encode($videos);
         }
 
-        updateSEO($hotel, 'App\Models\Pages\Hospital', $request);
+        updateSEO($hotel, 'App\Models\Pages\Laboratory', $request);
 
         $hotel->save();
 
-        return redirect()->route('admin.hospital.index')->with([
-            'status' => "New hospital created."
+        return redirect()->route('admin.laboratory.index')->with([
+            'status' => "New laboratory created."
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pages\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Laboratory $laboratory)
     {
         //
     }
@@ -80,14 +80,14 @@ class HospitalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pages\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hospital $hospital)
+    public function edit(Laboratory $laboratory)
     {
-        $hospital->load(['seo']);
-        return view('admin.hospital.edit')->with([
-            'hospital' => $hospital
+        $laboratory->load(['seo']);
+        return view('admin.lab.edit')->with([
+            'laboratory' => $laboratory
         ]);
     }
 
@@ -95,24 +95,24 @@ class HospitalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Pages\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hospital $hospital)
+    public function update(Request $request, Laboratory $laboratory)
     {
         $request->validate([
             'name' => 'required',
         ]);
 
-        $hospital->update($request->all());
+        $laboratory->update($request->all());
 
         if ($request->hasFile('image')) {
-            $file_name = uploadImage($request, 'image', 'hospital');
+            $file_name = uploadImage($request, 'image', 'laboratory');
 
-            if ($hospital->image) {
-                deleteImage($hospital->image);
+            if ($laboratory->image) {
+                deleteImage($laboratory->image);
             }
-            $hospital->image = $file_name;
+            $laboratory->image = $file_name;
         }
 
         if ($request->fields) {
@@ -122,35 +122,35 @@ class HospitalController extends Controller
                     $videos[] = $video;
                 }
             }
-            $hospital->videos = json_encode($videos);
+            $laboratory->videos = json_encode($videos);
         }
 
-        updateSEO($hospital, 'App\Models\Pages\Hospital', $request);
-        $hospital->save();
+        updateSEO($laboratory, 'App\Models\Pages\Laboratory', $request);
+        $laboratory->save();
 
         return back()->with([
-            'status' => "Hospital Updated"
+            'status' => "Laboratory Updated"
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pages\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hospital $hospital)
+    public function destroy(Laboratory $laboratory)
     {
-        if ($hospital->image) {
-            deleteImage($hospital->image);
+        if ($laboratory->image) {
+            deleteImage($laboratory->image);
         }
 
-        $hospital->seo()->delete();
+        $laboratory->seo()->delete();
 
-        $hospital->delete();
+        $laboratory->delete();
 
-        return redirect()->route('admin.hospital.index')->with([
-            'status' => "Hospital deleted."
+        return redirect()->route('admin.laboratory.index')->with([
+            'status' => "Laboratory deleted."
         ]);
     }
 }

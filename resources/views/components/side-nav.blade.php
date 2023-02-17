@@ -12,7 +12,23 @@
                 @if (auth()->user()->can('manage-hotels'))
                     <li class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }}">
                         <a href="#hotels">
-                            <i class="simple-icon-home"></i> Rooms
+                            <i class="iconsminds-hotel"></i> Rooms
+                        </a>
+                    </li>
+                @endif
+
+                @if (auth()->user()->can('manage-hospital'))
+                    <li class="{{ request()->routeIs('admin.hospital*') ? 'active' : '' }}">
+                        <a href="#hospital">
+                            <i class="iconsminds-stethoscope"></i> Hospitals
+                        </a>
+                    </li>
+                @endif
+
+                @if (auth()->user()->can('manage-lab'))
+                    <li class="{{ request()->routeIs('admin.laboratory*') ? 'active' : '' }}">
+                        <a href="#lab">
+                            <i class="iconsminds-microscope"></i> Laboratory
                         </a>
                     </li>
                 @endif
@@ -50,6 +66,40 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.rooms.create') }}">
+                            <i class="simple-icon-plus"></i>
+                            <span class="d-inline-block">Add New</span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
+
+            @if (auth()->user()->can('manage-hospital'))
+                <ul class="list-unstyled" data-link="hospital" id="hospital">
+                    <li>
+                        <a href="{{ route('admin.hospital.index') }}">
+                            <i class="simple-icon-eye"></i>
+                            <span class="d-inline-block">View all</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.hospital.create') }}">
+                            <i class="simple-icon-plus"></i>
+                            <span class="d-inline-block">Add New</span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
+            
+            @if (auth()->user()->can('manage-lab'))
+                <ul class="list-unstyled" data-link="lab" id="lab">
+                    <li>
+                        <a href="{{ route('admin.laboratory.index') }}">
+                            <i class="simple-icon-eye"></i>
+                            <span class="d-inline-block">View all</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.laboratory.create') }}">
                             <i class="simple-icon-plus"></i>
                             <span class="d-inline-block">Add New</span>
                         </a>
