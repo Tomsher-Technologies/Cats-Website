@@ -15,21 +15,22 @@ class HotelController extends Controller
      */
     public function index(Request $request)
     {
-        $per_page = $request->per_page ?? 15;
+        // $per_page = $request->per_page ?? 15;
 
-        $query = Hotel::query();
+        // $query = Hotel::query();
 
-        if ($request->q) {
-            $query = $query->where('name', 'LIKE', '%' . $request->q . '%')
-                ->orwhere('slug', $request->q);
-        }
+        // if ($request->q) {
+        //     $query = $query->where('name', 'LIKE', '%' . $request->q . '%')
+        //         ->orwhere('slug', $request->q);
+        // }
 
-        $hotels =  $query->paginate($per_page);
+        // $hotels =  $query->paginate($per_page);
 
-        return view('admin.hotels.index')->with([
-            'hotels' => $hotels,
-            'per_page' => $per_page,
-        ]);
+        // return view('admin.hotels.index')->with([
+        //     'hotels' => $hotels,
+        //     'per_page' => $per_page,
+        // ]);
+        return view('admin.hotels.index');
     }
 
     /**
@@ -100,7 +101,6 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        $hotel->load(['seo']);
         return view('admin.hotels.edit')->with([
             'hotel' => $hotel
         ]);

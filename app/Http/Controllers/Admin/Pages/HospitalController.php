@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pages\Hospital;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -14,7 +15,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.hospital.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.hospital.create');
     }
 
     /**
@@ -35,7 +36,34 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $hotel = Hospital::create($request->all());
+
+        if ($request->hasFile('image')) {
+            $file_name = uploadImage($request, 'image', 'hotels');
+            $hotel->image = $file_name;
+        }
+
+        if ($request->fields) {
+            $videos = array();
+            foreach ($request->fields as $video) {
+                if ($video !== null) {
+                    $videos[] = $video;
+                }
+            }
+            $hotel->videos = json_encode($videos);
+        }
+
+        updateSEO($hotel, 'App\Models\Pages\Hospital', $request);
+
+        $hotel->save();
+
+        return redirect()->route('admin.hospital.index')->with([
+            'status' => "New hospital created."
+        ]);
     }
 
     /**
@@ -55,9 +83,12 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Hospital $hospital)
     {
-        //
+        $hospital->load(['seo']);
+        return view('admin.hospital.edit')->with([
+            'hospital' => $hospital
+        ]);
     }
 
     /**
@@ -67,9 +98,39 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Hospital $hospital)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $hospital->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $file_name = uploadImage($request, 'image', 'hotels');
+
+            if ($hospital->image) {
+                deleteImage($hospital->image);
+            }
+            $hospital->image = $file_name;
+        }
+
+        if ($request->fields) {
+            $videos = array();
+            foreach ($request->fields as $video) {
+                if ($video !== null) {
+                    $videos[] = $video;
+                }
+            }
+            $hospital->videos = json_encode($videos);
+        }
+
+        updateSEO($hospital, 'App\Models\Pages\Hospital', $request);
+        $hospital->save();
+
+        return back()->with([
+            'status' => "Hospital Updated"
+        ]);
     }
 
     /**
@@ -78,8 +139,18 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Hospital $hospital)
     {
-        //
+        if ($hospital->image) {
+            deleteImage($hospital->image);
+        }
+
+        $hospital->seo()->delete();
+
+        $hospital->delete();
+
+        return redirect()->route('admin.hospital.index')->with([
+            'status' => "Hospital deleted."
+        ]);
     }
 }
