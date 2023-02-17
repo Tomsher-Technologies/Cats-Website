@@ -16,8 +16,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.11",
+        "power-components/livewire-powergrid": "^2.4",
         "silber/bouncer": "^1.0",
-        "wildside/userstamps": "^2.2"
+        "wildside/userstamps": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

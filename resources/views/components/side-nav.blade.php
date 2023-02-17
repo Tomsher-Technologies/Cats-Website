@@ -9,6 +9,14 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->can('manage-hotels'))
+                    <li class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }}">
+                        <a href="#hotels">
+                            <i class="simple-icon-home"></i> Rooms
+                        </a>
+                    </li>
+                @endif
+
                 @if (auth()->user()->can('manage-users'))
                     <li class="{{ request()->routeIs('admin.users*') ? 'active' : '' }}">
                         <a href="{{ route('admin.users.index') }}">
@@ -32,6 +40,22 @@
     <div class="sub-menu">
         <div class="scroll">
 
+            @if (auth()->user()->can('manage-hotels'))
+                <ul class="list-unstyled" data-link="hotels" id="hotels">
+                    <li>
+                        <a href="{{ route('admin.rooms.index') }}">
+                            <i class="simple-icon-eye"></i>
+                            <span class="d-inline-block">View all</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.rooms.create') }}">
+                            <i class="simple-icon-plus"></i>
+                            <span class="d-inline-block">Add New</span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
 
         </div>
     </div>

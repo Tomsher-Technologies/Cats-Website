@@ -17,6 +17,7 @@ class CreateHotelsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('content')->nullable();
+            $table->string('main_video')->nullable();
             $table->tinyText('videos')->nullable();
             $table->boolean('status')->default(true);
             $table->string('image')->nullable();

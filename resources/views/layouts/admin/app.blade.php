@@ -19,9 +19,12 @@
     <link rel="stylesheet" href="{{ asset('admin-asset/css/vendor/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin-asset/css/vendor/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin-asset/css/vendor/select2-bootstrap.min.css') }}" />
+    @livewireStyles
+    @livewireScripts
     @stack('header')
     <link rel="stylesheet" href="{{ asset('admin-asset/css/dore.light.blue.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin-asset/css/main.css') }}" />
+    
 </head>
 
 

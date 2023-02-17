@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Controller\HotelController;
 use App\Http\Controllers\Common\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Users\ProfileController;
@@ -48,5 +49,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // All Users 
         Route::resource('users', UserController::class);
+
+        // Hotels
+        Route::resource('rooms', HotelController::class)->except(['show'])->parameters(['rooms' => 'hotel']);
     });
 });

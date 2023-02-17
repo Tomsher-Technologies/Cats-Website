@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <form id="deleteForm" action="{{ route('users.destroy', $user) }}" method="POST">
+    <form id="deleteForm" action="{{ route('admin.users.destroy', $user) }}" method="POST">
         @csrf
         @method('DELETE')
     </form>
