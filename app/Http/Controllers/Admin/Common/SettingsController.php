@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Common;
+namespace App\Http\Controllers\Admin\Common;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common\Setting;
