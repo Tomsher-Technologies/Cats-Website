@@ -33,6 +33,14 @@
                     </li>
                 @endif
 
+                @if (auth()->user()->can('manage-teams'))
+                    <li class="{{ request()->routeIs('admin.teams*') ? 'active' : '' }}">
+                        <a href="#teams">
+                            <i class="simple-icon-people"></i> Teams
+                        </a>
+                    </li>
+                @endif
+
                 @if (auth()->user()->can('manage-users'))
                     <li class="{{ request()->routeIs('admin.users*') ? 'active' : '' }}">
                         <a href="{{ route('admin.users.index') }}">
@@ -89,7 +97,7 @@
                     </li>
                 </ul>
             @endif
-            
+
             @if (auth()->user()->can('manage-lab'))
                 <ul class="list-unstyled" data-link="lab" id="lab">
                     <li>
@@ -100,6 +108,23 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.laboratory.create') }}">
+                            <i class="simple-icon-plus"></i>
+                            <span class="d-inline-block">Add New</span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
+
+            @if (auth()->user()->can('manage-teams'))
+                <ul class="list-unstyled" data-link="teams" id="teams">
+                    <li>
+                        <a href="{{ route('admin.teams.index') }}">
+                            <i class="simple-icon-eye"></i>
+                            <span class="d-inline-block">View all</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.teams.create') }}">
                             <i class="simple-icon-plus"></i>
                             <span class="d-inline-block">Add New</span>
                         </a>

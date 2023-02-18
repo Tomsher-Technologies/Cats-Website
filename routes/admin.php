@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Pages\HospitalController;
 use App\Http\Controllers\Admin\Pages\HotelController;
 use App\Http\Controllers\Admin\Pages\LaboratoryController;
+use App\Http\Controllers\Admin\Pages\TeamsController;
 use App\Http\Controllers\Admin\Users\ProfileController;
 use App\Http\Controllers\Admin\Users\UserController;
 use Illuminate\Support\Facades\Route;
@@ -60,5 +61,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // Laboratory
         Route::resource('laboratory', LaboratoryController::class)->except(['show']);
+
+        // Teams
+        Route::resource('teams', TeamsController::class)->except(['show']);
     });
 });
