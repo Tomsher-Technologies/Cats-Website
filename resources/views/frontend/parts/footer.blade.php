@@ -14,27 +14,27 @@
       ">
                 <ul class="social-list list-inline">
                     <li class="list-inline-item">
-                        <a title="Instagram" href="https://www.instagram.com/catsmedical/" target="_blank">
-                            <img src="img/ig.png" style="width: 40px; height: auto" /></a>
+                        <a title="Instagram" href="{{ $settings['instagram_url']->value ?? '#' }}" target="_blank">
+                            <img src="{{ asset('img/ig.png') }}" style="width: 40px; height: auto" /></a>
                     </li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">
-                        <a title="Youtube" href="https://www.youtube.com/channel/UCIoABroCWAyw1d2JWTy-EPw"
+                        <a title="Youtube" href="{{ $settings['youtube_url']->value ?? '#' }}"
                             target="_blank">
-                            <img src="img/yt.png" style="width: 40px; height: auto" /></a>
+                            <img src="{{ asset('img/yt.png') }}" style="width: 40px; height: auto" /></a>
                     </li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">
-                        <a title="Facebook" href="https://www.facebook.com/vanessa.jensen.353" target="_blank">
-                            <img src="img/fb.png" style="width: 40px; height: auto" /></a>
+                        <a title="Facebook" href="{{ $settings['facebook_url']->value ?? '#' }}" target="_blank">
+                            <img src="{{ asset('img/fb.png') }}" style="width: 40px; height: auto" /></a>
                     </li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">
-                        <a title="Youtube" href="coming-soon.html">
-                            <img src="img/vegantest.png" style="width: 40px; height: auto" /></a>
+                        <a title="Youtube" href="{{ $settings['vegan_url']->value ?? '#' }}">
+                            <img src="{{ asset('img/vegantest.png') }}" style="width: 40px; height: auto" /></a>
                     </li>
                 </ul>
             </div>
@@ -59,22 +59,14 @@
             color: black;
             letter-spacing: 2px;
           ">
-                        10 am - 7 pm
-                    </li>
-                    <li
-                        style="
-            text-align: -webkit-center;
-            -webkit-text-stroke-width: thin;
-            color: black;
-            letter-spacing: 2px;
-          ">
-                        Everyday - 365 days a year.
+                        {!! $settings['opening_hours']->value !!}
                     </li>
                 </ul>
             </div>
             <div class="col-md-6">
                 <!--<h6 style="text-align: -webkit-center;"><i class="fas fa-envelope margin-icon"></i>Contact Us</h6>-->
                 <ul class="list-unstyled">
+
                     <li
                         style="
             text-align: -webkit-center;
@@ -82,10 +74,13 @@
             color: black;
             letter-spacing: 2px;
           ">
-                        <i class="fas fa-phone"></i>&nbsp;<a href="tel:+97143204204" style="color: black">04 320
-                            4204</a><br />
-                        <i class="fab fa-whatsapp" style="color: green"></i>&nbsp;<a href="https://wa.me/97143204204"
-                            target="_blank" style="color: black">04 320 4204</a>
+
+                        <i class="fas fa-phone"></i>&nbsp;<a
+                            href="tel:{{ Str::replace(' ', '', $settings['primary_phone']->value) }}"
+                            style="color: black">{{ $settings['primary_phone']->value }}</a><br />
+                        <i class="fab fa-whatsapp" style="color: green"></i>&nbsp;<a
+                            href="https://wa.me/{{ Str::replace(' ', '', $settings['primary_whatsapp']->value) }}"
+                            target="_blank" style="color: black">{{ $settings['primary_phone']->value }}</a>
                     </li>
                     <li>&nbsp;</li>
                     <li
@@ -95,12 +90,10 @@
             color: black;
             letter-spacing: 2px;
           ">
-                        <i class="fa fa-mobile-alt"></i>&nbsp;<a href="tel:+971522497390" style="color: black">05 224
-                            97390</a><br />
-                        <i class="fab fa-whatsapp" style="color: green"></i>&nbsp;<a href="https://wa.me/971522497390"
-                            target="_blank" style="color: black">05 224 97390</a>
+                        <i class="fa fa-mobile-alt"></i>&nbsp;<a href="tel:{{ Str::replace(' ', '', $settings['secondary_phone']->value) }}" style="color: black">{{ $settings['secondary_phone']->value }}</a><br />
+                        <i class="fab fa-whatsapp" style="color: green"></i>&nbsp;<a href="https://wa.me/{{ Str::replace(' ', '', $settings['secondary_whatsapp']->value) }}"
+                            target="_blank" style="color: black">{{ $settings['secondary_phone']->value }}</a>
                     </li>
-                    <!--<li><a href="mailto:vanessa@thecathospital.ae">vanessa@thecathospital.ae</a></li>-->
                     <li>&nbsp;</li>
                     <li
                         style="
@@ -109,8 +102,7 @@
             color: black;
             letter-spacing: 2px;
           ">
-                        <i class="fa fa-map-marker"></i>&nbsp;Al Murooj complex,
-                        downtown Dubai, UAE.
+                        <i class="fa fa-map-marker"></i>&nbsp;{!! $settings['address']->value !!}
                     </li>
                 </ul>
             </div>
@@ -119,10 +111,7 @@
 </footer>
 <div class="container-fluid">
     <div class="row">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d451.2497014655978!2d55.27732555443727!3d25.20330303976728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x492b59296be38ad9!2zMjXCsDEyJzEzLjAiTiA1NcKwMTYnMzguNyJF!5e0!3m2!1sen!2sae!4v1652509312591!5m2!1sen!2sae"
-            height="380" style="border: 0; width: 100%" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {!! $settings['google_map']->value !!}
     </div>
 </div>
 

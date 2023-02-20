@@ -39,7 +39,7 @@
                                 <textarea class="form-control" name="content" id="engEditor">{!! old('content') !!}</textarea>
                             </div>
 
-                            <x-input name="main_video" text="Main Youtube Video" type="url" />
+                            {{-- <x-input name="main_video" text="Main Youtube Video" type="url" /> --}}
 
                             <h6>Other Videos</h6>
                             <div class="dynamic-wrap">

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Pages\HospitalController;
 use App\Http\Controllers\Admin\Pages\HotelController;
 use App\Http\Controllers\Admin\Pages\LaboratoryController;
+use App\Http\Controllers\Admin\Pages\PageController;
 use App\Http\Controllers\Admin\Pages\TeamsController;
 use App\Http\Controllers\Admin\Users\ProfileController;
 use App\Http\Controllers\Admin\Users\UserController;
@@ -64,5 +65,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // Teams
         Route::resource('teams', TeamsController::class)->except(['show']);
+
+        // Teams
+        Route::resource('page', PageController::class)->only(['index', 'update', 'edit']);
     });
 });

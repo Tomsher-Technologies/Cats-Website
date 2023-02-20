@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Pages\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 function getStatusText($status)
@@ -85,4 +88,48 @@ function deleteImage($path)
     if (Storage::exists($fileName)) {
         Storage::delete($fileName);
     }
+}
+
+
+function convertYoutube($url)
+{
+    $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_-]+)\??/i';
+    $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))([a-zA-Z0-9_-]+)/i';
+    $youtube_id = "";
+    if (preg_match($longUrlRegex, $url, $matches)) {
+        $youtube_id = $matches[count($matches) - 1];
+    }
+
+    if (preg_match($shortUrlRegex, $url, $matches)) {
+        $youtube_id = $matches[count($matches) - 1];
+    }
+
+    if ($youtube_id == "") {
+        return $youtube_id;
+    }
+
+    return 'https://www.youtube.com/embed/' . $youtube_id;
+}
+
+function getSEOUrl($path)
+{
+    $uriSegments = explode(".", $path);
+    $pages = Cache::rememberForever('url_pages',  function () {
+        return Page::all();
+    });
+
+    $url_sub = "";
+    $url = $pages->where('page_name', $uriSegments[0])->pluck('slug')->first();
+
+    if (count($uriSegments) > 1) {
+        switch ($uriSegments[0]) {
+                // case 'university-staff':
+                //     $url_sub = Staff::whereId($uriSegments[1])->get()->pluck('slug')->first();
+                //     break;
+            default:
+                $url_sub = "";
+        }
+    }
+
+    return $url !== null ? URL::to($url . "/" . $url_sub) . "/" : "";
 }

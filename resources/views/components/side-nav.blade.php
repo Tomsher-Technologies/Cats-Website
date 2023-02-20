@@ -9,6 +9,14 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->can('manage-page'))
+                    <li class="{{ request()->routeIs('admin.page*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.page.index') }}">
+                            <i class="iconsminds-digital-drawing"></i> Pages
+                        </a>
+                    </li>
+                @endif
+
                 @if (auth()->user()->can('manage-hotels'))
                     <li class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }}">
                         <a href="#hotels">

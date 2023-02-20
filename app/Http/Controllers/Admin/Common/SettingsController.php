@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Common;
 use App\Http\Controllers\Controller;
 use App\Models\Common\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class SettingsController extends Controller
 {
@@ -34,6 +35,8 @@ class SettingsController extends Controller
                 Setting::where('name', $key)->update(['value' => $link]);
             }
         }
+
+        Cache::flush('settings');
 
         return back()->with(['status' => "Settings updated"]);
     }

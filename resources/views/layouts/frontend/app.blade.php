@@ -9,7 +9,9 @@
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
 
-    <title>{{ env('APP_NAME') }} - {{ $title ?? '' }}</title>
+    {{-- <title>{{ env('APP_NAME') }} - {{ $title ?? '' }}</title> --}}
+
+    {!! SEO::generate() !!}
 
     <link rel="preload" href="https://fonts.googleapis.com" />
     <link rel="preload" href="http://maps.google.com" />
@@ -52,9 +54,7 @@
 
     @include('frontend.parts.header')
 
-    <section>
-        @yield('content')
-    </section>
+    @yield('content')
 
     @include('frontend.parts.footer')
 
