@@ -29,7 +29,7 @@
                     @if ($hotel->videos)
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-10 m-auto">
+                                <div class="col-12 col-lg-10 m-auto">
                                     <div class="row justify-content-center">
                                         @foreach (json_decode($hotel->videos) as $video)
                                             <div class="col-lg-4">

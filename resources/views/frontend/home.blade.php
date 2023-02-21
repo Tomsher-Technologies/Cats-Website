@@ -30,7 +30,7 @@
             <!-- /Section-heading -->
             <div class="row">
                 <!-- /col-xl-->
-                <div class="col-12 col-lg-4 block-padding pb-3 pb-lg-0 pt-lg-0 pt-0"
+                <div class="col-12 col-lg-4 block-padding pb-3 pb-lg-0 pt-lg-4 pt-0"
                     style="
             position: relative;
             padding-right: 10px;
@@ -56,7 +56,7 @@
                     </a>
                 </div>
 
-                <div class="col-12 col-lg-4 gradient_mob1 block-padding pb-3 pt-0 pb-lg-0"
+                <div class="col-12 col-lg-4 gradient_mob1 block-padding pb-3 pt-0 pt-lg-4  pb-lg-0"
                     style="
             position: relative;
             padding-right: 10px;
@@ -82,7 +82,7 @@
                     </a>
                 </div>
 
-                <div class="col-12 col-lg-4 gradient_mob1"
+                <div class="col-12 col-lg-4 pt-lg-4  gradient_mob1"
                     style="
             position: relative;
             padding-right: 10px;
@@ -186,7 +186,7 @@
         ">
                 <div class="row">
                     <!-- /col-xl-->
-                    <div class="col-12 col-lg-6 pb-3 pb-lg-0"
+                    <div class="col-12 col-lg-6 pb-3 pb-lg-0 pt-lg-2"
                         style="
               position: relative;
               padding-right: 10px;
@@ -212,7 +212,7 @@
                             </h2>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-6"
+                    <div class="col-12 col-lg-6 pt-lg-2"
                         style="
               position: relative;
               padding-right: 10px;

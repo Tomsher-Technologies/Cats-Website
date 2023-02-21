@@ -32,21 +32,21 @@ class FrontendController extends Controller
             return Page::all();
         });
 
-        // try {
-        $page = $pages->where('slug', $uriSegments[0])->firstOrFail();
-
-        $functionName = Str::camel($page->page_name);
-
-        if (!method_exists(FrontendController::class, $functionName)) {
+        try {
+            $page = $pages->where('slug', $uriSegments[0])->firstOrFail();
+    
+            $functionName = Str::camel($page->page_name);
+    
+            if (!method_exists(FrontendController::class, $functionName)) {
+                abort(404);
+            }
+    
+            $view = $this->$functionName($page, $uriSegments[1] ?? null);
+    
+            return $view;
+        } catch (\Exception $exception) {
             abort(404);
         }
-
-        $view = $this->$functionName($page, $uriSegments[1] ?? null);
-
-        return $view;
-        // } catch (\Exception $exception) {
-        //     abort(404);
-        // }
         abort(404);
     }
 
@@ -76,7 +76,7 @@ class FrontendController extends Controller
         $page->load(['seo', 'blocks']);
         $this->loadSEO($page);
 
-        $hospitals = Hospital::whereStatus(true)->get();
+        $hospitals = Hospital::whereStatus(true)->orderBy('sort_order')->get();
 
         return view('frontend.hospital')->with([
             'page' => $page,
@@ -89,7 +89,7 @@ class FrontendController extends Controller
         $page->load(['seo', 'blocks']);
         $this->loadSEO($page);
 
-        $labs = Laboratory::whereStatus(true)->get();
+        $labs = Laboratory::whereStatus(true)->orderBy('sort_order')->get();
 
         return view('frontend.labs')->with([
             'page' => $page,
@@ -109,7 +109,7 @@ class FrontendController extends Controller
         $page->load(['seo', 'blocks']);
         $this->loadSEO($page);
         $blocks = $page->blocks->keyBy('name');
-        return view('frontend.com_page')->with([
+        return view('frontend.customer_facilities')->with([
             'page' => $page,
             'blocks' => $blocks,
         ]);
@@ -163,6 +163,16 @@ class FrontendController extends Controller
         ]);
     }
 
+
+    public function vegan($page)
+    {
+        $page->load(['seo', 'blocks']);
+        $this->loadSEO($page);
+
+        return view('frontend.vegan')->with([
+            'page' => $page,
+        ]);
+    }
 
 
 

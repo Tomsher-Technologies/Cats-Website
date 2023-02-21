@@ -106,7 +106,16 @@
     @livewireScripts
 
     <script>
-        var engEditor = ClassicEditor.create(document.querySelector('#engEditor'));
+        var engEditor = ClassicEditor.create(document.querySelector('#engEditor'),{
+            config: [
+                allowedContent = true,
+                extraAllowedContent = 'iframe[*]',
+            ],
+            mediaEmbed: {
+             previewsInData: true
+            }
+        });
+        
 
         function readURL(input, node) {
             if (input.files && input.files[0]) {

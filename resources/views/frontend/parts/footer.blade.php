@@ -33,7 +33,7 @@
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">&nbsp;</li>
                     <li class="list-inline-item">
-                        <a title="Youtube" href="{{ $settings['vegan_url']->value ?? '#' }}">
+                        <a title="Vegan" href="{{ getSEOUrl('vegan') }}">
                             <img src="{{ asset('img/vegantest.png') }}" style="width: 40px; height: auto" /></a>
                     </li>
                 </ul>
