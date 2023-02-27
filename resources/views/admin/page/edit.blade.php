@@ -100,22 +100,65 @@
 @endpush
 
 @push('footer')
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script> --}}
     <script src="{{ asset('admin-asset/js/vendor/select2.full.js') }}"></script>
 
     @livewireScripts
+    
+    <script src="{{ asset('admin-asset/js/tinymce/tinymce.min.js') }}"></script>
 
     <script>
-        var engEditor = ClassicEditor.create(document.querySelector('#engEditor'),{
-            config: [
-                allowedContent = true,
-                extraAllowedContent = 'iframe[*]',
+        tinymce.init({
+            selector: '#engEditor',
+            menubar: 'edit view insert format tools table help',
+            plugins: [
+                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor',
+                'pagebreak',
+                'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'template', 'code',
             ],
-            mediaEmbed: {
-             previewsInData: true
-            }
+            menu: {
+                edit: {
+                    title: 'Edit',
+                    items: 'undo redo | cut copy paste pastetext | selectall | searchreplace'
+                },
+                view: {
+                    title: 'View',
+                    items: 'visualaid visualchars visualblocks | spellchecker | preview fullscreen | showcomments'
+                },
+                insert: {
+                    title: 'Insert',
+                    items: 'image link media addcomment pageembed template codesample inserttable | charmap hr | pagebreak nonbreaking anchor tableofcontents | insertdatetime'
+                },
+                format: {
+                    title: 'Format',
+                    items: 'bold italic underline strikethrough superscript subscript | styles blocks fontfamily fontsize align lineheight | forecolor backcolor | language | removeformat'
+                },
+                tools: {
+                    title: 'Tools',
+                    items: 'spellchecker spellcheckerlanguage | a11ycheck wordcount'
+                },
+                table: {
+                    title: 'Table',
+                    items: 'inserttable | cell row column | advtablesort | tableprops deletetable'
+                }
+            },
+            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link image media | preview  fullscreen | code',
         });
-        
+    </script>
+
+    <script>
+        // var engEditor = ClassicEditor.create(document.querySelector('#engEditor'),{
+        //     config: [
+        //         allowedContent = true,
+        //         extraAllowedContent = 'iframe[*]',
+        //     ],
+        //     mediaEmbed: {
+        //      previewsInData: true
+        //     }
+        // });
+
 
         function readURL(input, node) {
             if (input.files && input.files[0]) {
