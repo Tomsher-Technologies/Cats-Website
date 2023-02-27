@@ -68,7 +68,7 @@
                     <a href="{{ getSEOUrl('laboratory') }}">
                         <img src="{{ $pages['laboratory']->featuredImage() }}" alt="{{ $pages['laboratory']->title }}"
                             data-aos="fade-down" data-aos-duration="1500" class="img-fluid cropped1" />
-                        <h2 class="hd1"
+                        <h1 class="hd1"
                             style="
                 position: absolute;
                 top: 82%;
@@ -78,11 +78,11 @@
                 letter-spacing: 2px;
               ">
                             <span>{{ $pages['laboratory']->title }}</span>
-                        </h2>
+                        </h1>
                     </a>
                 </div>
 
-                <div class="col-12 col-lg-4 pt-lg-4  gradient_mob1"
+                <div class="col-12 col-lg-4 pt-lg-4  gradient_mob1 pb-3"
                     style="
             position: relative;
             padding-right: 10px;
@@ -94,7 +94,7 @@
                     <a href="{{ getSEOUrl('hotel') }}">
                         <img src="{{ $pages['hotel']->featuredImage() }}" alt="{{ $pages['hotel']->title }}"
                             data-aos="fade-down" data-aos-duration="1500" class="img-fluid cropped1" />
-                        <h2 class="hd1"
+                        <h1 class="hd1"
                             style="
                 position: absolute;
                 top: 82%;
@@ -104,13 +104,13 @@
                 letter-spacing: 2px;
               ">
                             <span>{{ $pages['hotel']->title }}</span>
-                        </h2>
+                        </h1>
                     </a>
                 </div>
                 <!-- /row -->
             </div>
 
-            <div class="container-fluid pt-2"
+            <div class="container-fluid pt-lg-2"
                 style="
           background-color: #faf39f !important;
           background-image: linear-gradient(#fffcda, #fffcda);
@@ -132,7 +132,7 @@
                         <a href="{{ getSEOUrl('our-team') }}">
                             <img src="{{ $pages['our-team']->featuredImage() }}" alt="{{ $pages['our-team']->title }}"
                                 data-aos="fade-down" data-aos-duration="1500" class="img-fluid cropped1" />
-                            <h2 class="hd1"
+                            <h1 class="hd1"
                                 style="
                   position: absolute;
                   top: 82%;
@@ -142,10 +142,10 @@
                   letter-spacing: 2px;
                 ">
                                 <span>{{ $pages['our-team']->title }}</span>
-                            </h2>
+                            </h1>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-6"
+                    <div class="col-12 col-lg-6 pb-3" 
                         style="
               position: relative;
               padding-right: 10px;
@@ -158,7 +158,7 @@
                             <img src="{{ $pages['customer-facilities']->featuredImage() }}"
                                 alt="{{ $pages['customer-facilities']->title }}" data-aos="fade-down"
                                 data-aos-duration="1500" class="img-fluid cropped1" />
-                            <h2 class="hd1" id="te"
+                            <h1 class="hd1"
                                 style="
                   position: absolute;
                   top: 82%;
@@ -168,13 +168,13 @@
                   letter-spacing: 2px;
                 ">
                                 <span>{{ $pages['customer-facilities']->title }}</span>
-                            </h2>
+                            </h1>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="container-fluid block-padding pt-2 pt-lg-0"
+            <div class="container-fluid"
                 style="
           background-color: #faf39f !important;
           background-image: linear-gradient(#fffcda, #fffcda);
@@ -182,7 +182,7 @@
           justify-content: center;
           padding-right: 0px;
           padding-left: 0px;
-          padding-bottom: 12px;
+       
         ">
                 <div class="row">
                     <!-- /col-xl-->
@@ -193,13 +193,13 @@
               padding-left: 10px;
               background-color: #faf39f !important;
               background-image: linear-gradient(#fffcda, #fffcda);
-              padding-bottom: 10px;
+          
             ">
                         <a href="{{ getSEOUrl('see-your-cat') }}">
                             <img src="{{ $pages['see-your-cat']->featuredImage() }}"
                                 alt="{{ $pages['see-your-cat']->title }}" data-aos="fade-down" data-aos-duration="1500"
                                 class="img-fluid cropped1" />
-                            <h2 class="hd1"
+                            <h1 class="hd1"
                                 style="
                   position: absolute;
                   top: 82%;
@@ -209,7 +209,7 @@
                   letter-spacing: 1px;
                 ">
                                 <span>{{ $pages['see-your-cat']->title }}</span>
-                            </h2>
+                            </h1>
                         </a>
                     </div>
                     <div class="col-12 col-lg-6 pt-lg-2"
@@ -219,23 +219,24 @@
               padding-left: 10px;
               background-color: #faf39f !important;
               background-image: linear-gradient(#fffcda, #fffcda);
-              padding-bottom: 10px;
+            
             ">
                         <a href="{{ getSEOUrl('our-rescue-team') }}">
                             <img src="{{ $pages['our-rescue-team']->featuredImage() }}"
                                 alt="{{ $pages['our-rescue-team']->title }}" data-aos="fade-down" data-aos-duration="1500"
                                 class="img-fluid cropped1" />
-                            <h2 class="hd1"
+                            <h1 class="hd1"
                                 style="
                   position: absolute;
                   top: 82%;
                   left: 10%;
                   color: black;
+                  margin: 0;
                   -webkit-text-stroke-width: thin;
                   letter-spacing: 1px;
                 ">
                                 <span>{{ $pages['our-rescue-team']->title }}</span>
-                            </h2>
+                            </h1>
                         </a>
                     </div>
                 </div>
@@ -249,7 +250,7 @@
         background-image: linear-gradient(#faf39f, white);
       ">
                 <div class="row">
-                    <div class="col-lg-12" style="display: flex; justify-content: center;letter-spacing: 2px;">
+                    <div class="col-lg-12" style="display: flex; justify-content: center;letter-spacing: 2px;  text-align: -webkit-center;">
                         {!! $blocks['Bottom Content 1']->content !!}
                     </div>
                 </div>
@@ -263,7 +264,7 @@
         background-image: linear-gradient(#faf39f, white);
       ">
                 <div class="row">
-                    <div class="col-lg-12" style="display: flex; justify-content: center;letter-spacing: 2px;">
+                    <div class="col-lg-12" style="display: flex; justify-content: center;letter-spacing: 2px;  text-align: -webkit-center;">
                         {!! $blocks['Bottom Content 2']->content !!}
                     </div>
                 </div>

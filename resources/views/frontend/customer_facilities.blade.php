@@ -24,23 +24,6 @@
 @endsection
 @push('header')
     <style>
-    
-        .vidpal .media{
-            display: block;
-        }
-        
-        .vidpal iframe{
-            width: 50% !important;
-    position: relative !important;
-    margin: 0 auto !important;
-        height: 550px !important;
-        }
-        
-        .vidpal .media > div > div{
-           padding: 0 !important;
-    height: auto !important;
-        }
-    
         @media (max-width: 1200px) {
             .navbar {
                 padding: 5px;

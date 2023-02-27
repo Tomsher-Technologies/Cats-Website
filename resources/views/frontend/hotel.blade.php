@@ -3,7 +3,7 @@
     <div class="page">
         <div class="container-fluid block-padding"
             style="background-color: #FAF39F !important; background-image: linear-gradient(#FAF39F, white); justify-content: space-evenly; padding-top: 80px;">
-            <div class="text-center">
+            <div class="text-center vidpal">
                 <h1 style="color: black; -webkit-text-stroke-width: thin; letter-spacing: 2px;">
                     {{ $page->title }}
                 </h1>
@@ -27,17 +27,19 @@
                     {!! $hotel->content !!}
 
                     @if ($hotel->videos)
-                        <div class="container-fluid">
+                        <div class="container-fluid px-0">
                             <div class="row">
                                 <div class="col-12 col-lg-10 m-auto">
                                     <div class="row justify-content-center">
                                         @foreach (json_decode($hotel->videos) as $video)
-                                            <div class="col-lg-4">
-                                                <iframe width="100%" height="315"
+                                            <div class="col-lg-4 ">
+                                                <div class="video">
+                                                    <iframe width="100%" class="youtubeIframe"
                                                     src="{{ convertYoutube($video) }}"
                                                     title="YouTube video player" frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                     allowfullscreen=""></iframe>
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -69,6 +71,9 @@
 
 @push('header')
     <style>
+    
+
+    
         p,
         p a {
             color: black;

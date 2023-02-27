@@ -18,7 +18,7 @@
                 <div class="row">
                     <!-- /col-xl-->
                     @foreach ($labs as $hospital)
-                        <div class="col-12 col-lg-4 block-padding pb-3 pb-lg-0 pt-lg-4  pt-0"
+                        <div class="col-12 col-lg-4 block-padding pb-3 pb-lg-0 pt-lg-4  pt-0 new-row"
                             style="position: relative; padding-right: 10px; padding-left: 10px; background-color: #FAF39F !important; background-image: linear-gradient(#FAF39F, white); padding-bottom: 10px">
                             <a href="coming-soon">
                                 <img src="{{ $hospital->featuredImage() }}" alt="{{ $hospital->name }}" data-aos="fade-down"
@@ -62,7 +62,7 @@
         @media (max-width: 768px) {
             .block-padding {
                 padding-bottom: 12px;
-                padding-top: 22px!important;
+                padding-top: 22px;
             }
         }
     </style>
